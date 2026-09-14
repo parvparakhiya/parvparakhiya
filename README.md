@@ -32,7 +32,7 @@ Written in Lua for IceSL, exported to STL, printed, and made to mesh.
 
 ### Background
 
-Three months on the floor of an ISO 9001 forging plant — closed-die forging, heat treatment, dimensional inspection to ASME and DIN standards. Goods-in inspection and quantity verification at an aerospace C-parts supplier in Munich. A bachelor's in mechanical engineering before the mechatronics master's.
+Three months on the floor of an ISO 9001 forging plant producing pipe fittings and flanges to ASME and DIN dimensional standards — closed-die forging, heat treatment, and dimensional inspection against drawings and gauges. Incoming goods inspection and quantity verification at an aerospace C-parts supplier in Munich. A bachelor's in mechanical engineering before the mechatronics master's.
 
 I like problems where the data has a machine behind it.
 

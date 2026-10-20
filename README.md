@@ -2,11 +2,27 @@
 
 Mechanical engineer working on predictive maintenance for production equipment — the part where sensor data meets a machine somebody has to keep running.
 
-M.Eng. Mechatronic and Cyber-Physical Systems at Deggendorf Institute of Technology. **Looking for an industry Master's thesis** in condition monitoring, industrial data or production engineering, starting October 2026. Based in Deggendorf, Bavaria.
+M.Eng. Mechatronic and Cyber-Physical Systems at Deggendorf Institute of Technology. Looking for an industry Master's thesis in condition monitoring, vibration and acoustic diagnostics, or industrial data, starting mid-November 2026. Based in Deggendorf, Bavaria.
 
 ---
 
 ### What I've been building
+
+#### [bearing-audit](https://github.com/parvparakhiya/bearing-audit) — bearing fault diagnosis from vibration, checked against the bearing's own geometry
+
+Fault frequencies scale with shaft speed, so the analysis runs in the order domain rather than at fixed frequency. Then I checked it against physics instead of against expectation: the bearing geometry tells you which orders each fault must produce, and I compared that prediction to the measurement. The lines landed within 0.3 % (median) of the predicted order in 36 of 40 race-fault recordings, across four load conditions. Envelope analysis, Hilbert transform, band-pass design and spectral kurtosis, written from NumPy and SciPy primitives rather than called from a library.
+
+Then the same thing happened as in pdm-audit. Macro-F1 1.00 under a random split, 0.70 on bearings the model had never seen, mean of ten seeds. The first number was leakage. The pass/fail criterion was in git before the first run, and nothing met it.
+
+Three defects the dataset's own documentation doesn't record:
+
+- Healthy files recorded at 48 kHz against 12 kHz for faults, proven from shaft-speed physics rather than from the file headers
+- A recorder-filter mismatch that let one feature separate healthy from faulty at 100 %, for reasons unconnected to the bearing
+- One file carrying a hidden duplicate of another recording
+
+Every one of them was improving my reported numbers.
+
+Evaluated as a plant would see it: 36 of 36 faults detected, 0 false alarms out of 12, but diagnosis precision peaked at 0.74 against a 0.95 target set in advance. Detection is solved. Telling the faults apart, on a bearing the system has never met, is not.
 
 #### [pdm-audit](https://github.com/parvparakhiya/pdm-audit) — I audited my own predictive-maintenance pipeline and shipped less than I built
 
